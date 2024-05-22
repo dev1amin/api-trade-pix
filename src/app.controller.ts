@@ -1,4 +1,4 @@
-import { Body, Controller, HttpStatus, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Post, Res } from '@nestjs/common';
 import { Response } from 'express';
 
 const CI_KEY = 'alfatech_1704401086322';
@@ -48,5 +48,10 @@ export class AppController {
           return retorno.status(HttpStatus.OK).json(respon);
         }
       });
+  }
+
+  @Get('health')
+  async health(@Res() res: Response) {
+    return res.status(HttpStatus.OK).json('OK');
   }
 }
